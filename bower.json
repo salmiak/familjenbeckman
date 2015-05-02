@@ -1,0 +1,21 @@
+{
+  "name": "familjenbeckman",
+  "version": "0.0.0",
+  "homepage": "https://github.com/salmiak/familjenbeckman",
+  "authors": [
+    "Alfred Beckman (@salmiak) <alfred@salmiakmedia.se>"
+  ],
+  "description": "Wordpress theme for the Beckman family",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "grunt": "~0.4.5"
+  }
+}
