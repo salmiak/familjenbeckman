@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   // Do grunt-related things in here
 
   grunt.initConfig({
@@ -6,19 +6,31 @@ module.exports = function(grunt) {
     clean: ['build'],
     copy: {
       copy: {
-        files: [{ expand: true, 
-                  cwd: 'src', 
-                  src: ['**','!**/*.scss'], 
-                  dest: 'build' }]
+        files: [
+          {
+            expand: true,
+            cwd: 'src',
+            src: ['**', '!**/*.scss'],
+            dest: 'build'
+          },
+          {
+            expand: true,
+            cwd: 'bower_components/flickity/dist',
+            src: ['**.min.*'],
+            dest: 'build/lib/',
+          }
+        ]
       }
     },
     sass: {
       sass: {
-        files: [{ expand: true, 
-                  cwd: 'src/style', 
-                  src: ['*.scss'], 
-                  dest: 'build/style', 
-                  ext: '.css' }]
+        files: [{
+          expand: true,
+          cwd: 'src/style',
+          src: ['*.scss'],
+          dest: 'build/style',
+          ext: '.css'
+        }]
       }
     },
     watch: {
@@ -34,8 +46,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  
+
   // Default task(s).
-  grunt.registerTask('dev',['clean','copy','sass']);
-  grunt.registerTask('watch' ['dev','watch:dev']);
+  grunt.registerTask('dev', ['clean', 'copy', 'sass']);
+  grunt.registerTask('watch' ['dev', 'watch:dev']);
 };

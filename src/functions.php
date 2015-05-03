@@ -1,11 +1,13 @@
 <?php
 
-//---------------------------------------------------------------------------------
-//	Aktivera den inbyggda menyfunktionalliteten
-//---------------------------------------------------------------------------------
+// Cycle sizes
+add_image_size( 'fullscreen', 2880, 1800, false );
+add_image_size( 'halfscreen', 1440, 900, false );
 
-add_theme_support( 'menus' );
-
+// Inline sizes
+add_image_size( 'thumbnail', 300, 300, true );
+add_image_size( 'medium', 720, 900, false );
+add_image_size( 'large', 1400, 1400, false );
 
 //---------------------------------------------------------------------------------
 //	Aktivera widgets

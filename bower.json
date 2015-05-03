@@ -16,6 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "grunt": "~0.4.5"
+    "flickity": "~1.0.2"
   }
 }
