@@ -38,6 +38,61 @@
               echo '</div>';
             endif;
 
+          // ====== HEADER NO IMAGE
+          elseif( get_row_layout() == 'header_no_image' ): 
+    
+            $style = get_sub_field('style');
+    
+            if($style == 'small'): ?>
+
+              <div class="header"><div class="header-small">
+                <h2><?php 
+                  if( get_sub_field('title') != ''): 
+                    the_sub_field('title'); 
+                  else: 
+                    the_title(); 
+                  endif; 
+                ?></h2>
+                <h3><?php the_sub_field('sub_title'); ?></h3>
+                <div class="post-meta">
+                  &mdash;
+                  <?php the_time('j F Y') ?>
+                  <?php edit_post_link( __( 'Redigera det här inlägget' ), ' | ' ); ?>
+                </div>
+                <div class="preamble text-left"><?php the_sub_field('preamble'); ?></div>
+              </div></div>
+
+            <?php else: 
+
+              $image = get_sub_field('image'); ?>
+
+              <div class="header"><div class="header-<?php echo $style; ?> text-center" <?php if ($image != null) : printf('style="background-image: url(%s); color: #FFF;"',$image['sizes']['fullscreen']); endif; ?> >
+                <div class="vertical-center">
+                  <h2><?php 
+                    if( get_sub_field('title') != ''): 
+                    the_sub_field('title'); 
+                    else: 
+                    the_title(); 
+                    endif; 
+                  ?></h2>
+                  <h3><?php the_sub_field('sub_title'); ?></h3>
+                  <div class="post-meta text-center">
+                    &mdash;
+                    <?php the_time('j F Y') ?>
+                    <?php edit_post_link( __( 'Redigera det här inlägget' ), ' | ' ); ?>
+                    &mdash;
+                  </div>
+                </div>
+              </div></div>
+
+              <?php if(get_sub_field('preamble')): ?>
+                <div class="container preamble"><?php the_sub_field('preamble'); ?></div>
+              <?php endif; ?>
+
+            <?php endif; ?>
+
+          <?php 
+          
           endif;
 
         endwhile;
@@ -49,6 +104,9 @@
       endif; ?>
    
     <!-- 
+
+
+    
      <div class="container">
       <div class="post-header">
         <h2 class="post-title">
@@ -82,13 +140,6 @@
       </div>
     </div>
 -->
-
-    <div class="text-center post-meta">
-      &mdash;
-      <?php the_time('j F Y') ?>
-      <?php edit_post_link( __( 'Redigera det här inlägget' ), ' | ' ); ?>
-      &mdash;
-    </div>
     
   </article>
 

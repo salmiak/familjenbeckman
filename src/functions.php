@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(-1);
+
 // Cycle sizes
 add_image_size( 'fullscreen', 2880, 1800, false );
 add_image_size( 'halfscreen', 1440, 900, false );

@@ -1,6 +1,14 @@
 @import 'reset';
 @import url(http://fonts.googleapis.com/css?family=Merriweather:900,300italic,300,700,700italic,900italic|Open+Sans:300italic,600italic,700,300,600);
 
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
 /* 
 =========
 VARIABLES
@@ -15,7 +23,7 @@ $font-caption:  'Open Sans', sans-serif;
 
 // Colors
 
-$primary:  #198;
+$color-primary:  #198;
 
 /* 
 ====
@@ -24,7 +32,7 @@ BASE
 */
 
 * {
-  -webkit-font-smoothing: antialiased;
+  @include vendor-prefix(font-smoothing, antialiased);
 }
 
 body {
@@ -40,10 +48,19 @@ body {
 h2, h3, h4, h5 {
   font-family: $font-header;
   font-weight: 300;
-  font-size: 50px;
-  margin-top: 60px;
   margin-bottom: 15px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.15em;
 }
+h2 { 
+  font-size: 50px; 
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+h3 { 
+  font-size: 36px; 
+}
+
 
 p {
   margin-bottom: 30px;
@@ -51,10 +68,12 @@ p {
 
 a {
   text-decoration: none;
-  color: $primary;
+  color: $color-primary;
 }
 
 .text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
 
 /*
 ====
@@ -71,10 +90,24 @@ GRID
 .container {
   width: 80%;
   max-width: 650px;
-  margin: 0px auto;
+  margin: 30px auto;
   clear: both;
+  &.wide {
+    max-width: 1200px;
+  }
+  &.top-padding {
+    padding-top: 60px;
+  }
 }
 
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include vendor-prefix(transform, translate(-50%, -50%));
+  width: 90%;
+  max-width: 1200px;
+}
 
 
 /* 
@@ -124,10 +157,59 @@ footer {
 
 // Post
 
+article {
+  border-bottom: 10px solid desaturate(lighten($color-primary, 50%),50%);
+}
+
+.header {
+  & .header-small {
+    @extend .container;
+    padding-top: 60px;
+  }
+  & .header-large {
+    min-height: 70vh;
+    position: relative;
+    background-size: cover;
+    background-position: 50% 50%;
+    .preamble {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translate(-50%, 0);
+
+      p:last-child {margin-bottom: 0px;}
+    }
+  }
+  & .header-fullscreen {
+    min-height: 100vh;
+    position: relative;
+    background-size: cover;
+    background-position: 50% 50%;
+    .preamble {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translate(-50%, 0);
+
+      p:last-child {margin-bottom: 0px;}
+    }
+  }
+}
+
+.preamble {
+  max-width: 650px;
+  margin: 20px auto 30px;
+  font-family: $font-header;
+  font-size: 28px;
+  line-height: 1.5;
+  font-style: italic;
+  color: #999;
+}
+
 .post-meta {
   font-size: 12px;
   font-family: $font-caption;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
   text-transform: uppercase;
   letter-spacing: 3px;
 }
@@ -163,13 +245,15 @@ img {
   
   width: 100vw;
   overflow: hidden;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   
   &-fullscreen img.cycle-img {
     max-height:100vh; 
+    display: block;
   }
   
   &-halfscreen img.cycle-img {
     max-height: 50vh;
+    display: block;
   }
 }
