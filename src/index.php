@@ -38,6 +38,13 @@
               echo '</div>';
             endif;
 
+          // ====== IMAGE SECTION
+          elseif( get_row_layout() == 'image_section' ): 
+
+            $size = get_sub_field('size');
+            $image = get_sub_field('image');
+            printf('<div class="img-section-%s" style="background-image:url(%s)"></div>',$size, $image['sizes']['fullscreen']);
+  
           // ====== HEADER NO IMAGE
           elseif( get_row_layout() == 'header_no_image' ): 
     
