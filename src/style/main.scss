@@ -1,5 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Merriweather:900,300italic,300,700,700italic,900italic|Open+Sans:300italic,600italic,700,600,400,300);
 @import 'reset';
-@import url(http://fonts.googleapis.com/css?family=Merriweather:900,300italic,300,700,700italic,900italic|Open+Sans:300italic,600italic,700,600,400,300);
 
 @mixin vendor-prefix($name, $argument) {
   -webkit-#{$name}: #{$argument};
@@ -63,7 +63,7 @@ h3, .h3 {
 }
 
 p {
-  margin-bottom: 30px;
+  margin-bottom: 1.36363636em;
 }
 
 a {
@@ -271,6 +271,21 @@ img {
   }
 }
 
+.caption {
+  padding: 10px 20px 0;
+  background: rgba(0,0,0,.6);
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  color: #FFF;
+  font-family: $font-caption;
+  font-weight: 400;
+  font-size: 14px;
+  @include vendor-prefix(transition, all 0.7s);
+  @include vendor-prefix(transform, translate3d(0,100%,0));
+}
+
 // Cycle
 .cycle {
   
@@ -286,6 +301,10 @@ img {
   &-halfscreen img.cycle-img {
     height: 50vh;
     display: block;
+  }
+  
+  &-slide.is-selected .caption { 
+    @include vendor-prefix(transform, translate3d(0,0,0));
   }
 }
 
