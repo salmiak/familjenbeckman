@@ -295,11 +295,13 @@ img {
   
   &-fullscreen img.cycle-img {
     height:100vh; 
+    width: auto;
     display: block;
   }
   
   &-halfscreen img.cycle-img {
     height: 50vh;
+    width: auto;
     display: block;
   }
   

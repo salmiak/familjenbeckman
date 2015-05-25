@@ -32,11 +32,12 @@
               printf('<div class="cycle cycle-%s js-flickity" data-flickity-options=\'{ "cellAlign": "center", "contain": true }\'>',$size);
               while( have_rows('slide') ): the_row();
                 $image = get_sub_field('image');
+                //var_dump($image);
                 $caption = get_sub_field('caption');
                 if($caption != '') :
-                  printf('<div class="cycle-slide"><img src="%s" alt="%s" class="cycle-img" /><div class="caption">%s</div></div>', $image['sizes'][$size], $image['alt'], $caption);
+                  printf('<div class="cycle-slide"><img src="%s" alt="%s" width="%d" height="%d" class="cycle-img" /><div class="caption">%s</div></div>', $image['sizes'][$size], $image['alt'], $image['sizes'][$size.'-width'], $image['sizes'][$size.'-height'], $caption);
                 else :
-                  printf('<div class="cycle-slide"><img src="%s" alt="%s" class="cycle-img" /></div>', $image['sizes'][$size], $image['alt']);
+                  printf('<div class="cycle-slide"><img src="%s" alt="%s" width="%d" height="%d" class="cycle-img" /></div>', $image['sizes'][$size], $image['alt'], $image['sizes'][$size.'-width'], $image['sizes'][$size.'-height']);
                 endif;
               endwhile;
               echo '</div>';
