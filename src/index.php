@@ -29,7 +29,7 @@
 
             $size = get_sub_field('size');
             if( have_rows('slide') ): 
-              printf('<div class="cycle cycle-%s js-flickity" data-flickity-options=\'{ "cellAlign": "center", "contain": true }\'>',$size);
+              printf('<div class="cycle cycle-%s js-flickity" data-flickity-options=\'{ "cellAlign": "center", "contain": true, "imagesLoaded": true, "percentPosition": false }\'>',$size);
               while( have_rows('slide') ): the_row();
                 $image = get_sub_field('image');
                 //var_dump($image);
