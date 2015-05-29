@@ -33,6 +33,12 @@ BASE
 
 * {
   @include vendor-prefix(font-smoothing, antialiased);
+  // Optimize readability in all text, activating ligatures etc.
+  text-rendering: optimizeLegibility;
+  // This can eat processing resources - so don't do it on mobile devices.
+  @media (max-device-width: 480px) {
+    text-rendering: optimizeSpeed;
+  }
 }
 
 body {
