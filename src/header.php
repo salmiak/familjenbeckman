@@ -23,7 +23,7 @@
 
   <link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/img/favicon.png">
   
-  <meta name="viewport" content="width=600" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   <link type="text/css" rel="stylesheet" href="<?php bloginfo('template_url'); ?>/lib/flickity.min.css" />
   <link type="text/css" rel="stylesheet" href="<?php bloginfo( 'template_url' ); ?>/style/main.css" />

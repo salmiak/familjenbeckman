@@ -93,7 +93,7 @@ GRID
 */
 
 .section{
-  width: 100%;
+  width: 100vw;
   position: relative;
   clear: both;
 }
@@ -218,7 +218,8 @@ article {
     }
   }
   & .header-fullscreen {
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 80vw;
     position: relative;
     background-size: cover;
     background-position: 50% 50%;
@@ -300,7 +301,8 @@ img {
   margin-bottom: 0px;
   
   &-fullscreen img.cycle-img {
-    height:100vh; 
+    height: 100vh;
+    max-height: 80vw;
     width: auto;
     display: block;
   }
