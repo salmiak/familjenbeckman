@@ -3,8 +3,9 @@
 error_reporting(-1);
 
 // Cycle sizes
-add_image_size( 'fullscreen', 2880, 1800, false );
-add_image_size( 'halfscreen', 1440, 900, false );
+add_image_size( 'high', 2400, 2400, false );
+add_image_size( 'mid', 1600, 1600, false );
+add_image_size( 'low', 800, 800, false );
 
 // Inline sizes
 add_image_size( 'thumbnail', 300, 300, true );

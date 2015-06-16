@@ -35,10 +35,13 @@
                 //var_dump($image);
                 $caption = get_sub_field('caption');
                 if($caption != '') :
-                  printf('<div class="cycle-slide"><img src="%s" alt="%s" width="%d" height="%d" class="cycle-img" /><div class="caption">%s</div></div>', $image['sizes'][$size], $image['alt'], $image['sizes'][$size.'-width'], $image['sizes'][$size.'-height'], $caption);
+                  $caption = sprintf('<div class="caption">%s</div>',$caption );
                 else :
-                  printf('<div class="cycle-slide"><img src="%s" alt="%s" width="%d" height="%d" class="cycle-img" /></div>', $image['sizes'][$size], $image['alt'], $image['sizes'][$size.'-width'], $image['sizes'][$size.'-height']);
+                  $caption = '';
                 endif;
+
+                printf('<div class="cycle-slide"><img src="%s" srcset="%s %sw, %s %sw, %s %sw" alt="%s" class="cycle-img" />%s</div>', $image['sizes']['low'], $image['sizes']['low'], $image['sizes']['low-width'], $image['sizes']['mid'], $image['sizes']['mid-width'], $image['sizes']['high'], $image['sizes']['high-width'], $image['alt'], $caption);
+                
               endwhile;
               echo '</div>';
             endif;
@@ -48,7 +51,7 @@
 
             $size = get_sub_field('size');
             $image = get_sub_field('image');
-            printf('<div class="img-section-%s" style="background-image:url(%s)"></div>',$size, $image['sizes']['fullscreen']);
+            printf('<div class="img-section-%s" style="background-image:url(%s)"></div>',$size, $image['sizes']['high']);
   
           // ====== HEADER NO IMAGE
           elseif( get_row_layout() == 'header_no_image' ): 
@@ -78,7 +81,7 @@
 
               $image = get_sub_field('image'); ?>
 
-              <div class="header"><div class="header-<?php echo $style; ?> text-center" <?php if ($image != null) : printf('style="background-image: url(%s); color: #FFF;"',$image['sizes']['fullscreen']); endif; ?> >
+              <div class="header"><div class="header-<?php echo $style; ?> text-center" <?php if ($image != null) : printf('style="background-image: url(%s); color: #FFF;"',$image['sizes']['high']); endif; ?> >
                 <div class="vertical-center">
                   <h2><?php 
                     if( get_sub_field('title') != ''): 
@@ -112,44 +115,6 @@
         // no layouts found
 
       endif; ?>
-   
-    <!-- 
-
-
-    
-     <div class="container">
-      <div class="post-header">
-        <h2 class="post-title">
-          <a href="<?php the_permalink() ?>" 
-             rel="bookmark" 
-             title="Permalänk till <?php the_title_attribute(); ?>">
-            <?php the_title(); ?>
-          </a>
-        </h2>
-
-        <div class="post-meta">
-          <small>Skrivet den <?php the_time('j F, Y') ?> av <?php the_author_posts_link() ?></small>
-        </div>
-      </div>
-
-      <?php if ( is_archive() || is_search() ) : // Visa bara ett utdrag på arkiv- och sök-sidorna ?>
-      <div class="post-utdrag">
-        <?php the_excerpt( __( 'Läs mer →' ) ); ?>
-      </div>
-      <?php else : ?>
-
-      <div class="post-content">
-        <?php the_content( __( 'Läs mer →' ) ); ?>
-        <?php wp_link_pages(); ?>
-      </div>
-      <?php endif; ?>
-
-      <div class="post-meta">
-        <small>Sorterat under <?php the_category(', '); ?> <?php the_tags('med etiketterna: ', ', '); ?> med <?php comments_popup_link( __( '0 kommentarer' ), __( '1 kommentar' ), __( '% kommentarer' ) ); ?></small>
-        <?php edit_post_link( __( 'Redigera det här inlägget' ), ' | ' ); ?>
-      </div>
-    </div>
--->
     
   </article>
 
