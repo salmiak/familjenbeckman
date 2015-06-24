@@ -31,7 +31,7 @@ if ( function_exists('register_sidebar') )
 
 if (!is_admin()) {
 	wp_deregister_script('jquery');
-	wp_register_script('jquery', ("https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"), false);
+    wp_register_script('jquery', ("https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"), false);
 	wp_enqueue_script('jquery');
 }
 
