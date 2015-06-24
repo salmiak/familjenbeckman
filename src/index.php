@@ -123,12 +123,12 @@
   <?php endwhile; ?>
 
   <?php if ( $wp_query->max_num_pages > 1 ) : ?>
-  <nav id="nav-nedan">
-    <div class="nav-fore">
-      <?php next_posts_link( __( '← Äldre inlägg' ) ); ?>
+  <nav class="pagenav">
+    <div class="pagenav-prev">
+      <?php next_posts_link( __( '&laquo; Äldre inlägg' ) ); ?>
     </div>
-    <div class="nav-efter">
-      <?php previous_posts_link( __( 'Nyare inlägg →' ) ); ?>
+    <div class="pagenav-next">
+      <?php previous_posts_link( __( 'Nyare inlägg &raquo;' ) ); ?>
     </div>
   </nav>
   <!-- slut nav-nedan -->

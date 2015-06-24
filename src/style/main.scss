@@ -186,6 +186,24 @@ header {
   }
 }
 
+// Page Navigation
+.pagenav {
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+  &-prev {
+    float: left;
+  }
+  &-next {
+    float: right;
+  }
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
 
 // Footer
 
@@ -204,6 +222,7 @@ article {
 }
 
 .header {
+  
   & .header-small {
     @extend .container;
     padding-top: 60px;
@@ -213,6 +232,7 @@ article {
     position: relative;
     background-size: cover;
     background-position: 50% 50%;
+    text-shadow: 1px 0px 3px rgba(0,0,0,0.2);
     .preamble {
       position: absolute;
       bottom: 15px;
@@ -228,6 +248,7 @@ article {
     position: relative;
     background-size: cover;
     background-position: 50% 50%;
+    text-shadow: 1px 0px 3px rgba(0,0,0,0.2);
     .preamble {
       position: absolute;
       bottom: 15px;
@@ -300,13 +321,11 @@ img {
 
 // Cycle
 .cycle {
-  width: 100%;
   width: 100vw;
   overflow: hidden;
   margin-bottom: 0px;
   
   &-fullscreen img.cycle-img {
-    height: 100%;
     height: 100vh;
     max-height: 67vw;
     width: auto;
@@ -314,7 +333,6 @@ img {
   }
   
   &-halfscreen img.cycle-img {
-    height: 50%;
     height: 50vh;
     width: auto;
     display: block;
@@ -359,7 +377,6 @@ img {
     h2, .h2 { 
       font-size: 25px; 
       letter-spacing: -1px;
-      text-shadow: 1px 0px 3px rgba(0,0,0,0.2);
     }
     h3, .h3 { font-size: 18px; }
     
